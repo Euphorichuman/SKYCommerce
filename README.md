@@ -9,4 +9,4 @@ Laura Corrales:
 
 Martin Fuentes:
 
-Wendy Morelos:Nacida en Medellín - Antioquia,  18 años, estudiante de ingeniería foresta l , disfruto aprender cosas nuevas sobre todo en el ámbito de la tecnología y el derecho.
+Wendy Morelos:Nacida en Medellín - Antioquia,  18 años, estudiante de ingeniería foresta l , disfruto aprender cosas nuevas sobre todo en el ámbito de la tecnología y el derecho. 
