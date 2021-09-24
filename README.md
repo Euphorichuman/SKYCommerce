@@ -5,7 +5,7 @@ Andrés Sabogal: Estudiante de ingeniería agrícola, técnico en carpintería, 
 
 Daniel Hernández:
 
-Laura Corrales:
+Laura Corrales: Ingeniera de Control y Especialista en proyectos de la Universidad Nacional, actualmente trabajo en el área de marketing, como analista de datos en una empresa de construcción en Estados Unidos. Me interesa el área de programación, diseño, estrategias de negocio, entre otros
 
 Martin Fuentes:
 
