@@ -10,3 +10,4 @@ Laura Corrales: Ingeniera de Control y Especialista en proyectos de la Universid
 Martin Fuentes:
 
 Wendy Morelos:Nacida en Medellín - Antioquia, 18 años, estudiante de ingeniería forestal, disfruto aprender cosas nuevas sobre todo en el ámbito de la tecnología ay el derecho.  
+
