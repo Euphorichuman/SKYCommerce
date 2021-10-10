@@ -1,4 +1,6 @@
-# Getting Started with Create React App
+# SKYCommerce
+
+Software that will allow to control the physical and virtual sales of a manufacturing company and make the corresponding follow-up
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
