@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Maven+Pro&display=swap');
+
+.navbar-light .navbar-brand {
+    font-family: 'Maven Pro', sans-serif;
+    font-weight: 800;
+}
+
+.navbar-light .navbar-brand:hover {
+    color: indigo;
+}
+
+.navbar-nav > li{
+    padding-right: 20px;
+}
+
+.navbar-light .btn:hover {
+    border-color: indigo;
+    background-color: indigo;
+}
