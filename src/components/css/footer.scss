@@ -1,0 +1,30 @@
+$primary: #4E44CE;
+
+.footer {
+  background-color: #222222;
+  padding: 5rem 2rem;
+  margin-top: 128px;
+}
+
+.footer-item > h3{
+    color: #fff;
+}
+
+.footer-item-info {
+  width: 25%;
+}
+
+.footer-item-info > div > h3 {
+  font-size: 18px;
+  color: #fff;
+}
+
+.footer-item-info > div > a{
+  font-size: 16px;
+  color: #A0A0A2; /* blue colors for links too */
+  text-decoration: none; /* no underline */
+}
+
+.footer-item-info > div > a:hover {
+    color: $primary;
+}

@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import './css/navigation.css'
+import './css/navigation.scss'
 
 export class Navigation extends Component {
   render() {
     return (
-      <nav className="navbar navbar-expand-lg navbar-light bg-light p-4">
-        <div className="container-fluid px-5">
-          <Link className="navbar-brand" to={"#"}>
+      <nav className="navbar sticky-top navbar-expand-lg navbar-dark bg-dark p-3">
+        <div className="container-fluid">
+          <Link className="navbar-brand" to={"/"}>
             SKYCommerce
           </Link>
           <button
@@ -22,7 +22,7 @@ export class Navigation extends Component {
             <span className="navbar-toggler-icon"></span>
           </button>
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
+            <ul className="navbar-nav mx-auto mb-2 mb-lg-0">
               <li className="nav-item">
                 <Link className="nav-link" to={"#"}>
                   Soluciones
@@ -38,8 +38,8 @@ export class Navigation extends Component {
                   Precios
                 </Link>
               </li>
-              <button type="button" className="btn btn-dark rounded-pill color-in">Iniciar sesión</button>
             </ul>
+            <button type="button" className="btn btn-primary rounded-pill color-in">Iniciar sesión</button>
           </div>
         </div>
       </nav>

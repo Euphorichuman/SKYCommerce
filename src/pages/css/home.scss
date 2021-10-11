@@ -1,0 +1,80 @@
+.container {
+  margin-top: 80px;
+  text-align: center;
+}
+
+.container > h1 {
+  color: #fff;
+  font-size: 70px;
+}
+
+.container > p {
+  font-size: 1.5rem;
+  line-height: 2rem;
+}
+
+.spacer {
+  margin-bottom: 0px;
+  margin-left: 200px;
+  margin-right: 200px;
+}
+
+.container > button {
+  font-size: 20px;
+  padding-top: 11px;
+  padding-bottom: 11px;
+  padding-left: 22px;
+  padding-right: 22px;
+}
+
+.contact {
+  color: #fff;
+  border-radius: 0.75rem;
+  padding: 40px 60px;
+  text-align: left;
+  background: linear-gradient(
+    rgb(111, 102, 225) 9.86%,
+    rgb(78, 68, 206) 87.79%
+  );
+}
+
+.contact > div > h3 {
+  font-size: 52px;
+}
+
+.contact > div > p {
+  font-size: 24px;
+  color: #cac6f0;
+}
+
+.form-control {
+  background-color: #362f90;
+}
+
+.fc-margin {
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.form-control {
+  color: #fff;
+  border-width: 0px;
+  border: none;
+  padding: 12px 30px;
+}
+
+.form-control::placeholder {
+  color: #fff;
+}
+
+.fc-ta {
+  border-radius: 2rem;
+}
+
+.btn-submit {
+  margin-top: 1.5rem;
+}
+
+.btn-submit > button {
+  background-color: #362f90;
+}

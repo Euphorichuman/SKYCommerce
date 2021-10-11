@@ -1,0 +1,36 @@
+/* change the colors */
+$primary: #4E44CE;
+$dark: #2C2D30;
+
+
+$theme-colors: (
+  "primary":    $primary,
+  "dark":       $dark,
+);
+
+@import "bootstrap";
+
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;900&display=swap");
+
+@font-face {
+  font-family: "Circular Std";
+  src: url("./fonts/CircularStd-Bold.woff") format("woff"),
+    url("./fonts/CircularStd-Bold.woff2") format("woff2"),
+    url("./fonts/CircularStd-Book.woff2") format("woff2"),
+    url("./fonts/CircularStd-Medium.woff2") format("woff2");
+}
+
+
+
+body {
+  font-family: "Circular Std", sans-serif;
+  background-color: $dark;
+  color: #A0A0A2;;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
