@@ -1,0 +1,64 @@
+$primary: #4e44ce;
+$text: #cac6f0;
+$blue-custom: #3e36a5;
+
+.login {
+  color: $text;
+  width: 32rem;
+  border-radius: 0.75rem;
+  margin: 0;
+  padding: 40px 60px;
+  background: linear-gradient(
+    rgb(111, 102, 225) 9.86%,
+    rgb(78, 68, 206) 87.79%
+  );
+}
+
+.brand-lg {
+  color: #fff;
+  font-size: 1.8rem;
+}
+
+.login > div > p {
+  font-size: 18px;
+}
+
+.text-dl {
+  font-size: 16px !important;
+  margin: 1rem 0 1rem;
+}
+
+.nmt {
+  margin-top: 0;
+}
+
+.nmb {
+  margin-bottom: 0;
+}
+
+.input-d:disabled {
+  color: $text;
+  background: $blue-custom;
+}
+
+.link-t {
+  padding: 0.5rem 0.5rem 0;
+  font-size: 14px;
+  color: $text;
+}
+
+.btn-custom {
+  padding: 0.5rem 1rem;
+  background-color: $blue-custom;
+  border: none;
+  margin: 1rem;
+}
+
+.btn-custom:disabled {
+  background: $blue-custom;
+}
+
+.note {
+  font-size: 16px !important;
+  line-height: normal !important;
+}

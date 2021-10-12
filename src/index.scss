@@ -1,11 +1,11 @@
 /* change the colors */
-$primary: #4E44CE;
-$dark: #2C2D30;
-
+$primary: #4e44ce;
+$dark: #2c2d30;
+$text: #a0a0a2;
 
 $theme-colors: (
-  "primary":    $primary,
-  "dark":       $dark,
+  "primary": $primary,
+  "dark": $dark,
 );
 
 @import "bootstrap";
@@ -20,12 +20,17 @@ $theme-colors: (
     url("./fonts/CircularStd-Medium.woff2") format("woff2");
 }
 
-
+::-moz-selection {
+  background: rgba(78, 68, 206, 0.5);
+}
+::selection {
+  background: rgba(78, 68, 206, 0.5);
+}
 
 body {
   font-family: "Circular Std", sans-serif;
   background-color: $dark;
-  color: #A0A0A2;;
+  color: $text;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -33,4 +38,8 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+.non-style-link {
+  text-decoration: none; /* no underline */
 }

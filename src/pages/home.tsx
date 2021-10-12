@@ -1,4 +1,5 @@
 import React, { Fragment } from "react";
+import { Link } from "react-router-dom";
 import { Card } from "../components/card";
 import "./css/home.scss";
 
@@ -12,9 +13,9 @@ export function Home() {
           seguimiento de las ventas de los producto y/o servicio de su negocio o
           empresa.
         </p>
-        <button type="button" className="btn btn-primary rounded-pill mt-4">
+        <Link to={"/login"} className="btn-custom-xs btn btn-primary rounded-pill mt-4">
           Empezar ahora
-        </button>
+        </Link>
       </div>
 
       <div className="container">

@@ -24,8 +24,8 @@ export class Navigation extends Component {
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav mx-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                <Link className="nav-link" to={"#"}>
-                  Soluciones
+                <Link className="nav-link" to={"/"}>
+                  Inicio
                 </Link>
               </li>
               <li className="nav-item">
@@ -35,11 +35,11 @@ export class Navigation extends Component {
               </li>
               <li className="nav-item">
                 <Link className="nav-link" to={"#"}>
-                  Precios
+                  Soluciones
                 </Link>
               </li>
             </ul>
-            <button type="button" className="btn btn-primary rounded-pill color-in">Iniciar sesión</button>
+            <Link to={"/login"} className="btn btn-primary rounded-pill color-in">Iniciar sesión</Link>
           </div>
         </div>
       </nav>
