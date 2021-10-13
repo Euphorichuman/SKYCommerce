@@ -1,6 +1,6 @@
 import React from "react";
 import { useGoogleLogin } from "react-google-login";
-import './css/loginGoogle.scss';
+import './styles/loginGoogle.scss';
 
 const loginId =
   "287909153704-iae15oh5o2bn539gbqboeoj573e1tjsf.apps.googleusercontent.com";

@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { LoginGoogle } from "../components/loginGoogle";
-import "./css/login.scss";
+import "./styles/login.scss";
 
 const loginId =
   "287909153704-iae15oh5o2bn539gbqboeoj573e1tjsf.apps.googleusercontent.com";

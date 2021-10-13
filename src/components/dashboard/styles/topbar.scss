@@ -1,0 +1,34 @@
+$element-color: #35363a;
+$divider-color: #222222;
+
+.topbar {
+  height: 72px;
+  padding: 0 30px;
+  /*background-color: $element-color !important;
+  border-bottom: 2px solid $divider-color;*/
+
+  .brand-topbar {
+    color: #fff;
+    min-height: 100%;
+    height: 100%;
+    padding: 0 30px 0 0;
+    margin: 0;
+  }
+
+  .user-topbar {
+    min-height: 100%;
+    height: 100%;
+    padding: 0 0.75rem;
+
+    .avatar-topbar {
+      width: 2rem;
+      height: 2rem;
+      border-radius: 50%;
+    }
+
+    .username-topbar {
+      margin-left: 0.5rem !important;
+      margin: 0;
+    }
+  }
+}

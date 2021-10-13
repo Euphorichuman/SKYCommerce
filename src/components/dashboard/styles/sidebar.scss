@@ -1,0 +1,127 @@
+$backgroud-color: #35363a;
+$text-color: #a0a0a2;
+$active-color: #4E44CE;
+$active-text-color:#CAC6F0;
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 260px;
+  background-color: $backgroud-color;
+  border-top-right-radius: 16px;
+
+  .sidebar-header {
+    width: 260px;
+
+    .brand {
+      padding: 5px 0;
+      margin: 1rem 0 !important;
+      position: relative;
+      color: #fff;
+      font-size: 24px;
+    }
+  }
+
+  .user-sidebar {
+    .photo-user-sidebar-container {
+      position: relative;
+      .photo-user-sidebar {
+        width: 120px;
+        border-radius: 50%;
+      }
+
+      .settings-icons-user-sidebar {
+        cursor: pointer;
+        transform: translate(-40px);
+        position: absolute;
+        bottom: 0;
+        border-radius: 50%;
+        background: #2c2d30;
+        height: 40px;
+        width: 40px;
+        padding: 8px;
+        min-width: 20px;
+      }
+    }
+
+    .name-user-sidebar {
+      margin-top: 1rem;
+    }
+  }
+
+  .nav-links {
+    border-top-right-radius: 16px;
+    //border-bottom-right-radius: 16px;
+    background-color: #4E44CE;
+    //background: $backgroud-color;
+    height: 100%;
+    padding-top: 30px;
+    padding-left: 0;
+
+    li {
+      position: relative;
+      list-style: none;
+
+      a {
+        .nav-icon-list {
+          color: $text-color;
+
+          margin: 0 1rem 0;
+          height: 50px;
+          min-width: 20px;
+          text-align: center;
+          line-height: 50px;
+        }
+
+        span {
+          font-size: 18px;
+          color: $text-color;
+        }
+      }
+    }
+
+    li:hover {
+      background: #2c2d30;
+    }
+
+    li:active {
+      background-color: $active-color;
+      
+      a {
+        .nav-icon-list {
+          color: $active-text-color;
+        }
+
+        span {
+          color: $active-text-color;
+        }
+      }
+    }
+  }
+
+  .logout-sidebar {
+    position: fixed;
+    bottom: 0;
+    width: 260px;
+    border-radius: 16px;
+
+    .logout-content {
+      cursor: pointer;
+      margin: 1rem;
+      padding: 0.75rem 0;
+      border-radius: 16px;
+      background: #2c2d30;
+
+      p {
+        margin: 0;
+      }
+
+      .logout-icon {
+        margin-left: 1rem;
+        transform: rotate(180deg);
+      }
+    }
+  }
+}

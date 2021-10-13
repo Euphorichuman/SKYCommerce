@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import './css/card.scss'
+import './styles/card.scss'
 
 interface ICardProps {
     title?: string;
