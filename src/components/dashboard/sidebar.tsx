@@ -14,7 +14,7 @@ import {
 export class Sidebar extends Component {
   render() {
     return (
-      <div className="sidebar">
+      <div className="sidebar d-flex flex-column">
         <div className="sidebar-header d-flex flex-row justify-content-center">
           <Link className="brand non-style-link" to={"/dashboard"}>
             SKYCommerce
@@ -39,7 +39,7 @@ export class Sidebar extends Component {
         <ul className="nav-links">
           <li>
             <Link
-              to="/dashboard"
+              to="/dashboard/products"
               className="non-style-link d-flex flex-row align-items-center"
             >
               <FontAwesomeIcon className="nav-icon-list" icon={faBoxes} />
@@ -48,7 +48,7 @@ export class Sidebar extends Component {
           </li>
           <li>
             <Link
-              to="/dashboard"
+              to="/dashboard/sales"
               className="non-style-link d-flex flex-row align-items-center"
             >
               <FontAwesomeIcon
@@ -60,7 +60,7 @@ export class Sidebar extends Component {
           </li>
           <li>
             <Link
-              to="/dashboard"
+              to="/dashboard/users"
               className="non-style-link d-flex flex-row align-items-center"
             >
               <FontAwesomeIcon className="nav-icon-list" icon={faUsers} />

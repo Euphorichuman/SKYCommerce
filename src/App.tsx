@@ -36,6 +36,7 @@ function App() {
       <NavRoute exact path="/" component={Home} />
       <Route path="/login" component={Login}></Route>
       <Route path="/dashboard" component={Dashboard}></Route>
+      <Footer/>
     </Router>
   );
 }
