@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
 import { Card } from "../components/card";
-import "./css/home.scss";
+import "./styles/home.scss";
 
 export function Home() {
   return (
