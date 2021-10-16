@@ -9,7 +9,7 @@ export const productsData = [
     id: 2,
     description: "Product 2",
     price: "$30",
-    state: "available",
+    state: "not available",
   },
   {
     id: 3,
@@ -45,7 +45,7 @@ export const productsData = [
     id: 8,
     description: "Product 8",
     price: "$90",
-    state: "available",
+    state: "not available",
   },
   {
     id: 9,
@@ -69,19 +69,19 @@ export const productsData = [
     id: 12,
     description: "Product 12",
     price: "$130",
-    state: "available",
+    state: "not available",
   },
   {
     id: 13,
     description: "Product 13",
     price: "$140",
-    state: "available",
+    state: "not available",
   },
   {
     id: 14,
     description: "Product 14",
     price: "$150",
-    state: "available",
+    state: "not available",
   },
   {
     id: 15,

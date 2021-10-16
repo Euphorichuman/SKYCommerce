@@ -1,0 +1,64 @@
+$primary: #4e44ce;
+$dark: #2c2d30;
+$dark-light: #35363a;
+$text: #a0a0a2;
+
+.rdt_TableHeader {
+  background-color: transparent !important;
+  color: $text !important;
+
+  // Override select items alert
+  .cKcus {
+    border-bottom-left-radius: 16px;
+    border-bottom-right-radius: 16px;
+  }
+}
+
+// For subheader (Searchbar and add item)
+.gHUnYq {
+  background-color: transparent !important;
+  padding: 4px 0 !important;
+}
+
+.rdt_Table {
+  background-color: transparent !important;
+
+  .rdt_TableHeadRow {
+    background-color: transparent !important;
+    border: none !important;
+    color: $text !important;
+    text-transform: uppercase;
+
+    input {
+      width: 1rem;
+      height: 1rem;
+      margin-right: 6px;
+    }
+  }
+
+  .rdt_TableRow {
+    font-size: 1rem;
+    background-color: $dark-light !important;
+    color: $text;
+    border-radius: 7px;
+    margin-top: 10px;
+  }
+}
+
+.rdt_Pagination {
+  color: $text !important;
+  border: none !important;
+  background-color: transparent !important;
+
+  button {
+    color: $text !important;
+  }
+}
+
+.jexnEe {
+  color: $text !important;
+}
+
+.waVOq {
+  color: $text !important;
+}

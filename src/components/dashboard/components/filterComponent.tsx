@@ -1,25 +1,39 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import "./styles/filterComponent.scss";
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlusSquare } from "@fortawesome/free-solid-svg-icons";
 
 interface IFilterComponentProps {
-    onFilter: any,
-    onClear: any,
-    filterText: string
+  onFilter: any;
+  onClear: any;
+  filterText: string;
 }
+
 
 export class FilterComponent extends Component<IFilterComponentProps> {
   render() {
-      const {onFilter, onClear, filterText} = this.props;
+    const { onFilter, onClear, filterText } = this.props;
     return (
-      <Fragment>
+      <div className="subHeader-wrapper d-flex flex-row justify-content-between">
         <input
+          className="searchBar form-control rounded-pill"
+          type="search"
           id="search"
-          type="text"
-          placeholder="Filter table data..."
+          placeholder="Buscar por descripción..."
+          aria-label="Buscar"
           value={filterText}
           onChange={onFilter}
         />
-        <button onClick={onClear}>Borrar</button>
-      </Fragment>
+        <Link
+          to={"/dashboard"}
+          className="btn-addItem btn btn-primary rounded-pill d-flex flex-row align-items-center"
+        >
+          <FontAwesomeIcon className="" icon={faPlusSquare} />
+          <p>Agregar item</p>
+        </Link>
+      </div>
     );
   }
 }

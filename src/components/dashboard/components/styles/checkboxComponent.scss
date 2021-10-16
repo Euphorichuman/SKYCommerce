@@ -1,0 +1,81 @@
+$primary: #4e44ce;
+$dark: #2c2d30;
+$dark-light: #35363a;
+$text: #a0a0a2;
+
+/* Custom Checkbox */
+.control {
+  display: block;
+  position: relative;
+  margin-bottom: 25px;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.control input {
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+}
+
+.control__indicator {
+  position: absolute;
+  top: 2px;
+  left: 0;
+  height: 20px;
+  width: 20px;
+  border-radius: 4px;
+  border: 2px solid $text;
+  background: transparent;
+}
+
+.control--radio .control__indicator {
+  border-radius: 50%;
+}
+
+.control:hover input ~ .control__indicator,
+.control input:focus ~ .control__indicator {
+  border: 2px solid $primary;
+}
+
+.control input:checked ~ .control__indicator {
+  border: 2px solid $primary;
+  background: $primary;
+}
+
+.control input:disabled ~ .control__indicator {
+  background: $text;
+  opacity: 0.6;
+  pointer-events: none;
+  border: 2px solid $text;
+}
+
+.control__indicator:after {
+  font-family: "icomoon";
+  content: "\e5ca";
+  position: absolute;
+  display: none;
+}
+
+.control input:checked ~ .control__indicator:after {
+  display: block;
+  color: $text;
+}
+
+.control--checkbox .control__indicator:after {
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -52%);
+  -ms-transform: translate(-50%, -52%);
+  transform: translate(-50%, -52%);
+}
+
+.control--checkbox input:disabled ~ .control__indicator:after {
+  border-color: #7b7b7b;
+}
+
+.control--checkbox input:disabled:checked ~ .control__indicator {
+  background-color: $primary;
+  opacity: 0.2;
+  border: 2px solid $primary;
+}
