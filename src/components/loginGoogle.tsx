@@ -1,29 +1,22 @@
 import React from "react";
-import { useGoogleLogin } from "react-google-login";
-import './styles/loginGoogle.scss';
-
-const loginId =
-  "287909153704-iae15oh5o2bn539gbqboeoj573e1tjsf.apps.googleusercontent.com";
+import { useGoogleAuth } from "../providers/authentication";
+import { useUsers } from "../hooks/users";
+import "./styles/loginGoogle.scss";
 
 export function LoginGoogle() {
-  const onSuccess = (response: any) => {
-    console.log("Login Success: User:", response.profileObj.name);
+  const { signIn }: any = useGoogleAuth();
+  const {signInUser} = useUsers();
+
+  const handleSignIn = async () => {
+    const { tokenId } = await signIn();
+    console.log(tokenId);
+    signInUser(tokenId);
+    window.sessionStorage.setItem('tokenId', tokenId);
   };
 
-  const onFailure = (response: any) => {
-    console.log("Login failed", response);
-  };
-
-  const { signIn } = useGoogleLogin({
-    onSuccess,
-    onFailure,
-    clientId: loginId,
-    isSignedIn: true,
-    accessType: "offline",
-  });
   return (
     <button
-      onClick={signIn}
+      onClick={handleSignIn}
       className="btn btn-primary btn-custom-xs btn-custom-lg rounded-pill d-flex justify-content-evenly"
     >
       <img

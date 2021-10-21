@@ -14,7 +14,7 @@ interface IFilterComponentProps {
 
 export class FilterComponent extends Component<IFilterComponentProps> {
   render() {
-    const { onFilter, onClear, filterText } = this.props;
+    const { onFilter, /*onClear,*/ filterText } = this.props;
     return (
       <div className="subHeader-wrapper d-flex flex-row justify-content-between">
         <input

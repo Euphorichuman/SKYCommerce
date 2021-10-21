@@ -1,5 +1,5 @@
-import React, { Component, useState, useEffect, useMemo } from "react";
-import DataTable, { TableColumn } from "react-data-table-component";
+import React, { useState, useMemo } from "react";
+import { TableColumn } from "react-data-table-component";
 import { productsData } from "./productsData";
 import { DataTableBase } from "./components/dataTableBase";
 import { FilterComponent } from "./components/filterComponent";
@@ -44,8 +44,8 @@ const columns: TableColumn<DataRow>[] = [
 ];
 
 export function Products(): JSX.Element {
-  const [pending, setPending] = useState(true);
-  const [products, setProducts] = useState<Array<object>>([]);
+  /*const [pending, setPending] = useState(true);
+  const [products, setProducts] = useState<Array<object>>([]);*/
 
   const [filterText, setFilterText] = useState("");
   const [resetPaginationToggle, setResetPaginationToggle] = useState(false);
@@ -71,13 +71,6 @@ export function Products(): JSX.Element {
       />
     );
   }, [filterText, resetPaginationToggle]);
-
-  // For API connection
-  /*useEffect(() => {
-    fetch(APIGET)
-      .then((res) => res.json())
-      .then((json) => setProducts(json));
-  }, []);*/
 
   return (
     <div className="products d-flex flex-column">
