@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { useGoogleAuth } from "../../providers/authentication";
 import "./styles/sidebar.scss";
 
@@ -14,10 +14,12 @@ import {
 
 export function Sidebar(): JSX.Element {
   const { googleUser, signOut }: any = useGoogleAuth();
-
+  const history = useHistory();
+  
   const handleSignOut = async () => {
     await signOut();
     window.sessionStorage.removeItem('tokenId');
+    history.push('/login');
   };
 
   return (

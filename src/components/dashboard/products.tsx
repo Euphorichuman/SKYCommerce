@@ -4,6 +4,7 @@ import { productsData } from "./productsData";
 import { DataTableBase } from "./components/dataTableBase";
 import { FilterComponent } from "./components/filterComponent";
 import { CheckboxComponent } from "./components/checkboxComponent";
+import { ModalForm } from "./components/modalForm";
 import "./styles/products.scss";
 
 interface DataRow {
@@ -38,7 +39,7 @@ const columns: TableColumn<DataRow>[] = [
         style: {
           color: "#fff",
         },
-      }
+      },
     ],
   },
 ];
@@ -46,7 +47,7 @@ const columns: TableColumn<DataRow>[] = [
 export function Products(): JSX.Element {
   /*const [pending, setPending] = useState(true);
   const [products, setProducts] = useState<Array<object>>([]);*/
-
+  const [visibility, setVisibility] = useState(true);
   const [filterText, setFilterText] = useState("");
   const [resetPaginationToggle, setResetPaginationToggle] = useState(false);
   const filteredItems = productsData.filter(
@@ -67,6 +68,7 @@ export function Products(): JSX.Element {
       <FilterComponent
         onFilter={(e: any) => setFilterText(e.target.value)}
         onClear={handleClear}
+        setVisibility={setVisibility}
         filterText={filterText}
       />
     );
@@ -83,6 +85,58 @@ export function Products(): JSX.Element {
           selectableRowsComponent={CheckboxComponent}
         />
       </div>
+      <ModalForm
+        title={"Agregar productos"}
+        visibility={visibility}
+        setVisibility={setVisibility}
+      >
+        <form className="row g-3">
+          <div className="col-md-6">
+            <label htmlFor="inputId" className="form-label">
+              Identificador
+            </label>
+            <input
+              type="text"
+              className="form-control rounded-pill"
+              id="inputId"
+            />
+          </div>
+          <div className="col-md-6">
+            <label htmlFor="inputState" className="form-label">
+              Estado
+            </label>
+            <select id="inputState" className="form-select rounded-pill">
+              <option selected>Disponible</option>
+              <option>No disponible</option>
+            </select>
+          </div>
+          <div className="col-12">
+            <label htmlFor="inputDescription" className="form-label">
+              Descripción
+            </label>
+            <input
+              type="text"
+              className="form-control rounded-pill"
+              id="inputDescription"
+            />
+          </div>
+          <div className="col-12">
+            <label htmlFor="inputValue" className="form-label">
+              Valor (c/u)
+            </label>
+            <input
+              type="text"
+              className="form-control rounded-pill"
+              id="inputValue"
+            />
+          </div>
+          <div className="col-12">
+            <button type="submit" className="btn btn-primary rounded-pill color-in">
+              Agregar producto
+            </button>
+          </div>
+        </form>
+      </ModalForm>
     </div>
   );
 }

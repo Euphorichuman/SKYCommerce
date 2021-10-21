@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import "./styles/filterComponent.scss";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -8,13 +7,13 @@ import { faPlusSquare } from "@fortawesome/free-solid-svg-icons";
 interface IFilterComponentProps {
   onFilter: any;
   onClear: any;
+  setVisibility: any;
   filterText: string;
 }
 
-
 export class FilterComponent extends Component<IFilterComponentProps> {
   render() {
-    const { onFilter, /*onClear,*/ filterText } = this.props;
+    const { onFilter, /*onClear,*/ setVisibility, filterText } = this.props;
     return (
       <div className="subHeader-wrapper d-flex flex-row justify-content-between">
         <input
@@ -26,13 +25,10 @@ export class FilterComponent extends Component<IFilterComponentProps> {
           value={filterText}
           onChange={onFilter}
         />
-        <Link
-          to={"/dashboard"}
-          className="btn-addItem btn btn-primary rounded-pill d-flex flex-row align-items-center"
-        >
+        <button onClick={() => setVisibility(true)} className="btn-addItem btn btn-primary rounded-pill d-flex flex-row align-items-center">
           <FontAwesomeIcon className="" icon={faPlusSquare} />
           <p>Agregar item</p>
-        </Link>
+        </button>
       </div>
     );
   }

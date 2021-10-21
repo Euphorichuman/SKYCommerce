@@ -1,26 +1,18 @@
 import React, { useState } from "react";
-/*import { useHistory } from "react-router-dom";
-import { useGoogleAuth } from "./authentication";*/
+import { useHistory } from "react-router-dom";
+import { useGoogleAuth } from "./authentication";
 const ApiContext = React.createContext({}); // context
 
 interface IAPIProviderProps {
   children: React.ReactNode;
 }
 
-/*interface IServiceCallProps {
-  endpoint: string;
-  method: string;
-  tokenId: string;
-  request?: any;
-}*/
-
 export const APIProvider = ({ children }: IAPIProviderProps) => {
   const [tokenId, setTokenId] = useState();
-  /*const { signOut }: any = useGoogleAuth();
-  const history = useHistory();*/
+  const { signOut }: any = useGoogleAuth();
+  const history = useHistory();
 
   const serviceCall = async ( endpoint: string, method: string, tokenId: string, request?: any) => {
-    /*const { endpoint, method, tokenId, request } = props;*/
 
     const url = `${process.env.REACT_APP_API_URL}${endpoint}`;
     
@@ -36,8 +28,7 @@ export const APIProvider = ({ children }: IAPIProviderProps) => {
     if (response.ok) {
       return response.json();
     } else {
-      throw new Error();
-      /*const status = response.status;
+      const status = response.status;
       switch (status) {
         case 401:
           signOut();
@@ -48,14 +39,16 @@ export const APIProvider = ({ children }: IAPIProviderProps) => {
           break;
         default:
           throw new Error();
-      }*/
+      }
     }
   };
 
   /*const GETCall = (url: any) => {
+    const
     return serviceCall(url , "GET", tokenId);
-  };
+  };*/
 
+  /*
   const POSTCall = ({ url, request }: any) => {
     return serviceCall(url, "POST", tokenId, request);
   };
