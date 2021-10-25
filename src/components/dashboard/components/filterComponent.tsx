@@ -9,11 +9,13 @@ interface IFilterComponentProps {
   onClear: any;
   setVisibility: any;
   filterText: string;
+  setItem: any; // To clear the form fields
+  defaultItem?: any;
 }
 
 export class FilterComponent extends Component<IFilterComponentProps> {
   render() {
-    const { onFilter, /*onClear,*/ setVisibility, filterText } = this.props;
+    const { onFilter, setVisibility, filterText, setItem, defaultItem } = this.props;
     return (
       <div className="subHeader-wrapper d-flex flex-row justify-content-between">
         <input
@@ -25,7 +27,13 @@ export class FilterComponent extends Component<IFilterComponentProps> {
           value={filterText}
           onChange={onFilter}
         />
-        <button onClick={() => setVisibility(true)} className="btn-addItem btn btn-primary rounded-pill d-flex flex-row align-items-center">
+        <button
+          onClick={() => {
+            setVisibility(true);
+            setItem(defaultItem);
+          }}
+          className="btn-addItem btn btn-primary rounded-pill d-flex flex-row align-items-center"
+        >
           <FontAwesomeIcon className="" icon={faPlusSquare} />
           <p>Agregar item</p>
         </button>

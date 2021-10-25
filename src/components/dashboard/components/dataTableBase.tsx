@@ -1,5 +1,6 @@
 import React from "react";
 import DataTable, { TableProps, Alignment } from "react-data-table-component";
+import { Loading } from "./loading";
 import './styles/dataTableBase.scss'
 
 const paginationComponentOptions = {
@@ -19,6 +20,7 @@ export function DataTableBase<T>(props: TableProps<T>): JSX.Element {
       subHeader
       subHeaderWrap
       subHeaderAlign={Alignment.LEFT}
+      progressComponent={<Loading />}
       paginationComponentOptions={paginationComponentOptions}
       {...props}
     />

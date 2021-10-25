@@ -12,16 +12,23 @@ export const APIProvider = ({ children }: IAPIProviderProps) => {
   const { signOut }: any = useGoogleAuth();
   const history = useHistory();
 
-  const serviceCall = async ( endpoint: string, method: string, tokenId: string, request?: any) => {
+  interface IServiceCallProps {
+    endpoint: string;
+    method: string;
+    tokenId?: string;
+    request?: any;
+  }
+
+  const serviceCall = async (props: IServiceCallProps) => {
+    const { endpoint, method, tokenId, request } = props;
 
     const url = `${process.env.REACT_APP_API_URL}${endpoint}`;
-    
     const response = await fetch(url, {
       method,
       body: JSON.stringify(request),
       headers: {
         "Content-Type": "application/json",
-        Authorization: tokenId,
+        Authorization: tokenId!,
       },
     });
 
@@ -43,27 +50,29 @@ export const APIProvider = ({ children }: IAPIProviderProps) => {
     }
   };
 
-  /*const GETCall = (url: any) => {
-    const
-    return serviceCall(url , "GET", tokenId);
-  };*/
-
-  /*
-  const POSTCall = ({ url, request }: any) => {
-    return serviceCall(url, "POST", tokenId, request);
+  const GETCall = (url: string) => {
+    return serviceCall({ endpoint: url, method: "GET", tokenId });
   };
 
-  const DELETECall = ({ url }: any) => {
-    return serviceCall(url, "DELETE", tokenId);
+  const POSTCall = (url: string, request: any) => {
+    return serviceCall({ endpoint: url, method: "POST", request });
   };
 
-  const PUTCall = ({ url, request }: any) => {
-    return serviceCall(url, "PUT", tokenId, request);
-  };*/
+  const DELETECall = (url: string) => {
+    return serviceCall({ endpoint: url, method: "DELETE", tokenId });
+  };
+
+  const PUTCall = (url: string, request: any) => {
+    return serviceCall({ endpoint: url, method: "PUT", tokenId, request });
+  };
 
   const value = {
     serviceCall,
     setTokenId,
+    GETCall,
+    POSTCall,
+    DELETECall,
+    PUTCall,
     tokenId,
   };
 

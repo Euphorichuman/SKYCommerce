@@ -6,29 +6,29 @@ import { CheckboxComponent } from "./components/checkboxComponent";
 import { ModalForm } from "./components/modalForm";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashAlt, faPencilAlt } from "@fortawesome/free-solid-svg-icons";
+import { useProducts } from "../../hooks/products"; // Hooks
+import { Product, defaultProduct } from "../../hooks/interfaces";
 import "./styles/products.scss";
 
 type FormElement = React.FormEvent<HTMLFormElement>;
 
-type Product = {
-  id: string;
-  description: string;
-  price: string;
-  state: string;
-};
-
-const defaultProduct: Product = {
-  id: "",
-  description: "",
-  price: "",
-  state: "Disponible",
-};
-
 export function Products(): JSX.Element {
+  const {
+    product,
+    setProduct,
+    products,
+    pending,
+    deleteProduct,
+    onEditId,
+    setIdEdit,
+    saveProduct,
+  } = useProducts();
+
+  /** Columns of data table (react-data-table-component) */
   const columns: TableColumn<Product>[] = [
     {
       name: "Id",
-      selector: (row) => row.id,
+      selector: (row) => row.productIdentifier,
       sortable: true,
     },
     {
@@ -37,16 +37,16 @@ export function Products(): JSX.Element {
     },
     {
       name: "Precio c/u",
-      selector: (row) => row.price,
+      selector: (row) => row.unitValue,
       sortable: true,
     },
     {
       name: "Estado",
-      selector: (row) => row.state,
+      selector: (row) => row.statusProduct,
       sortable: true,
       conditionalCellStyles: [
         {
-          when: (row) => row.state === "Disponible",
+          when: (row) => row.statusProduct === "Disponible",
           style: {
             color: "#fff",
           },
@@ -58,16 +58,16 @@ export function Products(): JSX.Element {
         <div className="actions-container d-flex justify-content-between">
           <div className="action d-flex align-items-center justify-content-center">
             <FontAwesomeIcon
-              onClick={() => modifyProduct(row.id, true)}
-              id={row.id}
+              onClick={() => modifyProduct(row.productIdentifier, true)}
+              id={row.productIdentifier}
               className=""
               icon={faPencilAlt}
             />
           </div>
           <div className="action d-flex align-items-center justify-content-center">
             <FontAwesomeIcon
-              onClick={() => removeProduct(row.id)}
-              id={row.id}
+              onClick={() => deleteProduct(row.productIdentifier)}
+              id={row.productIdentifier}
               className=""
               icon={faTrashAlt}
             />
@@ -80,14 +80,12 @@ export function Products(): JSX.Element {
     },
   ];
 
-  /** Temporal products save*/
-  const [product, setProduct] = useState<Product>(defaultProduct);
-  const [products, setProducts] = useState<Product[]>([]);
-
   /** Modal from visivility*/
   const [visibility, setVisibility] = useState(false);
   /** Pagination on filter*/
   const [resetPaginationToggle, setResetPaginationToggle] = useState(false);
+  /**  Fields empty in products form*/
+  const [errorMessage, setErrorMessage] = useState("");
   /** Search bar */
   const [filterText, setFilterText] = useState("");
   const filteredItems = products.filter(
@@ -96,22 +94,22 @@ export function Products(): JSX.Element {
       item.description.toLowerCase().includes(filterText.toLowerCase())
   );
 
-  /**  Fields empty in products form*/
-  const [errorMessage, setErrorMessage] = useState("");
-
   /** Submit product form */
   const handleSubmit = (e: FormElement): void => {
     e.preventDefault();
 
     const isValid =
-      product.id && product.description && product.price && product.state;
+      product.productIdentifier &&
+      product.description &&
+      product.unitValue &&
+      product.statusProduct;
     const errorMessage = !isValid
-      ? "Por favor, ingrese todos los datos del producto"
+      ? "Por favor, ingrese todos los datos del producto*"
       : "";
     setErrorMessage(errorMessage);
 
     if (isValid) {
-      setProducts([...products, product]);
+      saveProduct();
       setProduct(defaultProduct);
       setVisibility(false);
     }
@@ -129,20 +127,14 @@ export function Products(): JSX.Element {
     });
   };
 
-  const modifyProduct = (id: number | string, isEdit: boolean): void => {
+  const modifyProduct = (id: string, isEdit: boolean): void => {
     if (isEdit) {
-      const productModifying: Product = products.find((p) => p.id === id)!;
-      if (product) {
-        setProduct(productModifying);
-        setVisibility(true);
-      }
+      setIdEdit(id);
+      setProduct(products.find((item) => item.productIdentifier === id)!);
+      setVisibility(true);
+    } else {
+      setProduct(defaultProduct);
     }
-
-    setProducts(products.filter((p) => p.id !== id));
-  };
-
-  const removeProduct = (id: number | string): void => {
-    setProducts(products.filter((p) => p.id !== id));
   };
 
   /** Pagination on filter*/
@@ -160,9 +152,11 @@ export function Products(): JSX.Element {
         onClear={handleClear}
         setVisibility={setVisibility}
         filterText={filterText}
+        setItem={setProduct}
+        defaultItem={defaultProduct}
       />
     );
-  }, [filterText, resetPaginationToggle]);
+  }, [filterText, resetPaginationToggle, setProduct]);
 
   return (
     <div className="products d-flex flex-column">
@@ -173,33 +167,41 @@ export function Products(): JSX.Element {
           data={filteredItems}
           subHeaderComponent={subHeaderComponentMemo}
           selectableRowsComponent={CheckboxComponent}
+          progressPending={pending}
         />
       </div>
       <ModalForm
         title={"Agregar productos"}
         visibility={visibility}
         setVisibility={setVisibility}
+        setIdEdit={setIdEdit}
       >
         <form onSubmit={handleSubmit} className="row g-3">
           <div className="col-md-6">
             <label htmlFor="inputId" className="form-label">
               Identificador
             </label>
-            <input
-              type="text"
-              onChange={(e) => handleChange(e, "id")}
-              value={product.id}
-              className="form-control rounded-pill"
-              id="inputId"
-            />
+            {onEditId ? (
+              <div className="form-control rounded-pill">
+                {product.productIdentifier}
+              </div>
+            ) : (
+              <input
+                type="text"
+                onChange={(e) => handleChange(e, "productIdentifier")}
+                value={product.productIdentifier}
+                className="form-control rounded-pill"
+                id="inputId"
+              />
+            )}
           </div>
           <div className="col-md-6">
             <label htmlFor="inputState" className="form-label">
               Estado
             </label>
             <select
-              onChange={(e) => handleChange(e, "state")}
-              value={product.state}
+              onChange={(e) => handleChange(e, "statusProduct")}
+              value={product.statusProduct}
               id="inputState"
               className="form-select rounded-pill"
             >
@@ -225,8 +227,8 @@ export function Products(): JSX.Element {
             </label>
             <input
               type="text"
-              onChange={(e) => handleChange(e, "price")}
-              value={product.price}
+              onChange={(e) => handleChange(e, "unitValue")}
+              value={product.unitValue}
               className="form-control rounded-pill"
               id="inputValue"
             />
@@ -237,7 +239,7 @@ export function Products(): JSX.Element {
               type="submit"
               className="btn btn-primary rounded-pill color-in"
             >
-              Agregar producto
+              {onEditId ? "Actualizar producto" : "Agregar producto"}
             </button>
           </div>
         </form>
