@@ -14,7 +14,6 @@ export const defaultProduct: Product = {
   statusProduct: "Disponible",
 };
 
-
 /** Sales */
 export type Sale = {
   soldProductIdentifier: string;
@@ -40,4 +39,19 @@ export const defaultSale: Sale = {
   statusSale: "En proceso",
 };
 
+/** Users */
+export type User = {
+  email: string;
+  name: string;
+  lastName: string;
+  role: string;
+  picture: string;
+};
 
+export const defaultUser: User = {
+  email: "",
+  name: "",
+  lastName: "",
+  role: "user",
+  picture: "",
+};

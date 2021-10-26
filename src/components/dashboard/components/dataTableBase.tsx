@@ -12,7 +12,6 @@ const paginationComponentOptions = {
 export function DataTableBase<T>(props: TableProps<T>): JSX.Element {
   return (
     <DataTable
-      title="Productos"
       pagination
       paginationPerPage={8}
       responsive

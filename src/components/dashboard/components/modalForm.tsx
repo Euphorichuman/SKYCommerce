@@ -12,8 +12,8 @@ interface IModalFormProps {
 
 export function ModalForm({
   title,
-  setIdEdit,
   children,
+  setIdEdit,
   visibility,
   setVisibility,
 }: IModalFormProps) {

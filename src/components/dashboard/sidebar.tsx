@@ -18,7 +18,6 @@ export function Sidebar(): JSX.Element {
   
   const handleSignOut = async () => {
     await signOut();
-    window.sessionStorage.removeItem('tokenId');
     history.push('/login');
   };
 
@@ -32,7 +31,7 @@ export function Sidebar(): JSX.Element {
       <div className="user-sidebar d-flex flex-column align-items-center">
         <div className="photo-user-sidebar-container">
           <img
-            src={"https://lh3.googleusercontent.com/a-/AOh14Gj_uD4aCL1X2DtEFch1KO_69PSm3rNflhDHD98Bvw=s96-c"/*googleUser.profileObj.imageUrl*/}
+            src={googleUser.profileObj.imageUrl}
             className="photo-user-sidebar"
             alt=""
           />
@@ -41,8 +40,8 @@ export function Sidebar(): JSX.Element {
             icon={faCog}
           />
         </div>
-        <h3 className="name-user-sidebar">{"Martin Elias Fuentes Acosta"/*googleUser.profileObj.name*/}</h3>
-        <p className="type-user-sidebar">[Tipo de usuario]</p>
+        <h3 className="name-user-sidebar">{googleUser.profileObj.name}</h3>
+        <p className="type-user-sidebar">admin</p>
       </div>
 
       <ul className="nav-links">

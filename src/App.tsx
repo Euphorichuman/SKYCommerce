@@ -7,6 +7,7 @@ import { Navigation } from "./components/navigation";
 import { Home } from "./pages/home";
 import { Footer } from "./components/footer";
 import { Login } from "./pages/login";
+import { NoAccess } from "./pages/no-access";
 import { useGoogleAuth } from "./providers/authentication";
 
 // Dashboard
@@ -36,10 +37,12 @@ function App() {
   return (
     <Router>
       <NavRoute exact path="/" component={Home} />
-      <Route path="/login">
-        {isInitialized && (isSignedIn ? <Redirect to="/dashboard"/> : <Login />)}
+      <Route path="/login" component={Login}>
+        {isInitialized &&
+          (isSignedIn ? <Redirect to="/dashboard" /> : <Login />)}
       </Route>
       <Route path="/dashboard" component={Dashboard}></Route>
+      <Route path="/no-access" component={NoAccess} />
       <Footer />
     </Router>
   );

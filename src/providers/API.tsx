@@ -21,7 +21,6 @@ export const APIProvider = ({ children }: IAPIProviderProps) => {
 
   const serviceCall = async (props: IServiceCallProps) => {
     const { endpoint, method, tokenId, request } = props;
-
     const url = `${process.env.REACT_APP_API_URL}${endpoint}`;
     const response = await fetch(url, {
       method,

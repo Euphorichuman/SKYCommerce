@@ -1,17 +1,18 @@
 import React from "react";
 import { useGoogleAuth } from "../providers/authentication";
+import { useApi } from "../providers/API";
 import { useUsers } from "../hooks/users";
 import "./styles/loginGoogle.scss";
 
 export function LoginGoogle() {
   const { signIn }: any = useGoogleAuth();
-  const {signInUser} = useUsers();
+  const { setTokenId }: any = useApi();
+  const { signInUser } = useUsers();
 
   const handleSignIn = async () => {
     const { tokenId } = await signIn();
-    console.log(tokenId);
+    setTokenId(tokenId);
     signInUser(tokenId);
-    window.sessionStorage.setItem('tokenId', tokenId);
   };
 
   return (

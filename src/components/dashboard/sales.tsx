@@ -5,7 +5,11 @@ import { FilterComponent } from "./components/filterComponent";
 import { CheckboxComponent } from "./components/checkboxComponent";
 import { ModalForm } from "./components/modalForm";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrashAlt, faPencilAlt } from "@fortawesome/free-solid-svg-icons";
+import {
+  faTrashAlt,
+  faPencilAlt,
+  faPlusSquare,
+} from "@fortawesome/free-solid-svg-icons";
 import { useSales } from "../../hooks/sales"; // Hooks
 import { Sale, defaultSale } from "../../hooks/interfaces";
 import "./styles/sales.scss";
@@ -112,10 +116,8 @@ export function Sales() {
   const [errorMessage, setErrorMessage] = useState("");
   /** Search bar */
   const [filterText, setFilterText] = useState("");
-  const filteredItems = sales.filter(
-    (item) =>
-      item.nameClient &&
-      item.nameClient.toLowerCase().includes(filterText.toLowerCase())
+  const filteredItems = sales.filter((item) =>
+    item.saleIdentifier.toString().includes(filterText)
   );
 
   /** Submit product form */
@@ -177,13 +179,22 @@ export function Sales() {
 
     return (
       <FilterComponent
+        placeHolderText={"Buscar por identificador de venta..."}
         onFilter={(e: any) => setFilterText(e.target.value)}
         onClear={handleClear}
-        setVisibility={setVisibility}
         filterText={filterText}
-        setItem={setSale}
-        defaultItem={defaultSale}
-      />
+      >
+        <button
+          onClick={() => {
+            setVisibility(true);
+            setSale(defaultSale);
+          }}
+          className="btn-addItem btn btn-primary rounded-pill d-flex flex-row align-items-center"
+        >
+          <FontAwesomeIcon className="" icon={faPlusSquare} />
+          <p>Agregar venta</p>
+        </button>
+      </FilterComponent>
     );
   }, [filterText, resetPaginationToggle, setSale]);
 

@@ -5,7 +5,7 @@ import { FilterComponent } from "./components/filterComponent";
 import { CheckboxComponent } from "./components/checkboxComponent";
 import { ModalForm } from "./components/modalForm";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrashAlt, faPencilAlt } from "@fortawesome/free-solid-svg-icons";
+import { faTrashAlt, faPencilAlt, faPlusSquare } from "@fortawesome/free-solid-svg-icons";
 import { useProducts } from "../../hooks/products"; // Hooks
 import { Product, defaultProduct } from "../../hooks/interfaces";
 import "./styles/products.scss";
@@ -148,13 +148,22 @@ export function Products(): JSX.Element {
 
     return (
       <FilterComponent
+        placeHolderText={"Buscar por descripción..."}
         onFilter={(e: any) => setFilterText(e.target.value)}
         onClear={handleClear}
-        setVisibility={setVisibility}
         filterText={filterText}
-        setItem={setProduct}
-        defaultItem={defaultProduct}
-      />
+      >
+        <button
+          onClick={() => {
+            setVisibility(true);
+            setProduct(defaultProduct);
+          }}
+          className="btn-addItem btn btn-primary rounded-pill d-flex flex-row align-items-center"
+        >
+          <FontAwesomeIcon className="" icon={faPlusSquare} />
+          <p>Agregar producto</p>
+        </button>
+      </FilterComponent>
     );
   }, [filterText, resetPaginationToggle, setProduct]);
 
