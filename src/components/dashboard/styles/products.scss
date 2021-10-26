@@ -1,8 +1,42 @@
+$primary: #4e44ce;
+$dark: #2c2d30;
+$dark-light: #35363a;
+$text: #a0a0a2;
+
 .products {
   flex: 4;
   margin: 0 2rem 0;
 
   .table-wrapper {
     width: 100%;
+
+    .actions-container {
+      width: 65px;
+      
+      .action {
+        cursor: pointer;
+        width: 30px;
+        height: 30px;
+
+        &:hover {
+          border-radius: 7px;
+          background-color: $dark;
+        }
+      }
+    }
+  }
+
+  form {
+    .form-control {
+      color: $text;
+      background-color: $dark;
+    }
+
+    .form-select {
+      color: $text;
+      border: none;
+      background-color: $dark;
+      height: 48px;
+    }
   }
 }

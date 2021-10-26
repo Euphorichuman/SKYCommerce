@@ -1,38 +1,32 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import "./styles/filterComponent.scss";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlusSquare } from "@fortawesome/free-solid-svg-icons";
 
 interface IFilterComponentProps {
+  placeHolderText?: string;
   onFilter: any;
   onClear: any;
   filterText: string;
+  children?: React.ReactNode;
 }
-
 
 export class FilterComponent extends Component<IFilterComponentProps> {
   render() {
-    const { onFilter, onClear, filterText } = this.props;
+    const { placeHolderText, onFilter, filterText, children } = this.props;
     return (
       <div className="subHeader-wrapper d-flex flex-row justify-content-between">
         <input
           className="searchBar form-control rounded-pill"
           type="search"
           id="search"
-          placeholder="Buscar por descripción..."
+          placeholder={placeHolderText}
           aria-label="Buscar"
           value={filterText}
           onChange={onFilter}
         />
-        <Link
-          to={"/dashboard"}
-          className="btn-addItem btn btn-primary rounded-pill d-flex flex-row align-items-center"
-        >
-          <FontAwesomeIcon className="" icon={faPlusSquare} />
-          <p>Agregar item</p>
-        </Link>
+        {children}
       </div>
     );
   }

@@ -42,6 +42,7 @@ $active-text-color: #cac6f0;
     }
 
     .name-user-sidebar {
+      text-align: center;
       margin-top: 1rem;
     }
   }
@@ -102,16 +103,25 @@ $active-text-color: #cac6f0;
     .logout-content {
       cursor: pointer;
       margin: 1rem;
-      padding: 0.75rem 0.75rem;
       border-radius: 16px;
       background: #2c2d30;
 
-      p {
+      .logout-button {
+        width: 100%;
+        border: none;
+        border-radius: 16px;
+        padding: 0.75rem 0.75rem;
         margin: 0;
-      }
+        background-color: transparent;
+        color: $text-color;
 
-      .logout-icon {
-        transform: rotate(180deg);
+        p {
+          margin: 0;
+        }
+
+        .logout-icon {
+          transform: rotate(180deg);
+        }
       }
     }
   }
