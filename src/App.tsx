@@ -38,7 +38,7 @@ const NavRoute = (prop: INavRouteProps) => (
 function App() {
   const { isInitialized, isSignedIn, googleUser }: any = useGoogleAuth();
   const { setTokenId }: any = useApi();
-  
+
   const setTokenIdCallback = useCallback(
     (tokenId) => setTokenId(tokenId),
     [setTokenId]
@@ -54,9 +54,10 @@ function App() {
     <Router>
       <NavRoute exact path="/" component={Home} />
       <Route path="/login" component={Login}>
-        {isInitialized && (isSignedIn ? <Redirect to="/dashboard" /> : <Login />)}
+        {isInitialized &&
+          (isSignedIn ? <Redirect to="/dashboard" /> : <Login />)}
       </Route>
-      <Route path="/dashboard" component={Dashboard}></Route>
+      <Route path="/dashboard" component={Dashboard} />
       <Route path="/no-access" component={NoAccess} />
       <Footer />
     </Router>
