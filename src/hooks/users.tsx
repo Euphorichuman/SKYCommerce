@@ -1,26 +1,13 @@
 import { useState, useEffect, useCallback } from "react";
-import { useGoogleAuth } from "../providers/authentication";
 import { useApi } from "../providers/API";
 import { User, defaultUser } from "./interfaces";
 
 export const useUsers = () => {
-  const { signOut }: any = useGoogleAuth();
-  const { serviceCall, GETCall, DELETECall, PUTCall, setTokenId }: any =
-    useApi();
+  const { GETCall, DELETECall, PUTCall }: any = useApi();
   const [user, setUser] = useState<User>(defaultUser);
   const [users, setUsers] = useState<User[]>([]);
   /** Pending data in table */
   const [pending, setPending] = useState(true);
-
-  const signInUser = (tokenId: string) => {
-    serviceCall({ endpoint: "/users/signin", method: "GET", tokenId: tokenId })
-      .then(() => console.log("User signed in"))
-      .catch((err: any) => {
-        signOut();
-        setTokenId();
-        console.log(err);
-      });
-  };
 
   const fetchUsers = useCallback(() => {
     GETCall("/users")
@@ -58,7 +45,7 @@ export const useUsers = () => {
   }, [fetchUsers]);
 
   return {
-    signInUser,
+    /*signInUser,*/
     user,
     users,
     setUser,

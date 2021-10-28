@@ -1,13 +1,13 @@
 import React from "react";
 import { useGoogleAuth } from "../providers/authentication";
 import { useApi } from "../providers/API";
-import { useUsers } from "../hooks/users";
+import { useUsersLogin } from "../hooks/userLogin";
 import "./styles/loginGoogle.scss";
 
 export function LoginGoogle() {
   const { signIn }: any = useGoogleAuth();
   const { setTokenId }: any = useApi();
-  const { signInUser } = useUsers();
+  const { signInUser } = useUsersLogin();
 
   const handleSignIn = async () => {
     const { tokenId } = await signIn();

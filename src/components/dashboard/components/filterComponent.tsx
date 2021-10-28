@@ -1,9 +1,6 @@
 import React, { Component } from "react";
 import "./styles/filterComponent.scss";
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlusSquare } from "@fortawesome/free-solid-svg-icons";
-
 interface IFilterComponentProps {
   placeHolderText?: string;
   onFilter: any;

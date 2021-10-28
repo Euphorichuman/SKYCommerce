@@ -15,6 +15,9 @@ import {
 export function Sidebar(): JSX.Element {
   const { googleUser, signOut }: any = useGoogleAuth();
   const history = useHistory();
+
+  const name = googleUser.profileObj.name;
+  const picture = googleUser.profileObj.imageUrl;
   
   const handleSignOut = async () => {
     await signOut();
@@ -31,7 +34,7 @@ export function Sidebar(): JSX.Element {
       <div className="user-sidebar d-flex flex-column align-items-center">
         <div className="photo-user-sidebar-container">
           <img
-            src={googleUser.profileObj.imageUrl}
+            src={picture}
             className="photo-user-sidebar"
             alt=""
           />
@@ -40,7 +43,7 @@ export function Sidebar(): JSX.Element {
             icon={faCog}
           />
         </div>
-        <h3 className="name-user-sidebar">{googleUser.profileObj.name}</h3>
+        <h3 className="name-user-sidebar">{name}</h3>
         <p className="type-user-sidebar">admin</p>
       </div>
 
